@@ -27,6 +27,10 @@ long_description="""
 这里是说明
 
 数据库操作。
+
+
+https://github.com/napoler/tkitDb/
+
 """
 setup(
     name='tkitDb',
@@ -34,7 +38,7 @@ setup(
     description='Terry toolkit db',
     author='Terry Chan',
     author_email='napoler2008@gmail.com',
-    url='https://terry-toolkit.terrychan.org/zh/master/',
+    url='https://github.com/napoler/tkitDb/',
     # install_requires=read_requirements('requirements.txt'),  # 指定需要安装的依赖
     long_description=long_description,
     long_description_content_type="text/markdown",
