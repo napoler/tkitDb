@@ -45,6 +45,10 @@ class LitDb:
     def get_item(self):
         for row in self.cursor.execute('SELECT * FROM stocks ORDER BY price'):
             yield row
+    def csv_to_sql(self,csv_file,db_name="csv_import"):
+        df = pandas.read_csv(csv_file)
+        df.to_sql(db_name, self.db, if_exists='replace', index=False)
+
 
 if __name__ == '__main__':
     db = LitDb()
