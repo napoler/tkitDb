@@ -12,3 +12,8 @@ https://unqlite.github.io/2013/05/26/about/
 ## plyvel
 Plyvel is a fast and feature-rich Python interface to LevelDB.
 https://plyvel.readthedocs.io/en/latest/
+
+## sqlitedict 
+sqlitedict -- persistent dict, backed-up by SQLite and pickle
+
+https://github.com/RaRe-Technologies/sqlitedict

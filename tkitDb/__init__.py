@@ -6,7 +6,9 @@ Blog: https://terrychan.org
 
 """
 
-from .db import LevelDb, UnQDb
+# from .db import LevelDb, UnQDb
+from .db import UnQDb
 from .pkl import PkDb
 from .litDb import Lit3Db
 # from .search import *
+from sqlitedict import SqliteDict
