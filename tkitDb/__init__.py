@@ -7,6 +7,7 @@ Blog: https://terrychan.org
 """
 
 # from .db import LevelDb, UnQDb
+from .lv import lvDb
 from .db import UnQDb
 from .pkl import PkDb
 from .litDb import Lit3Db

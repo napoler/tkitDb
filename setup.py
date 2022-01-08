@@ -46,7 +46,7 @@ setup(
         'tqdm==4.38.0',
         'unqlite==0.7.1',
         'sqlitedict==1.7.0',
-        # 'plyvel==1.1.0',
+        'plyvel==1.4.0',
     ],
     packages=['tkitDb'])
 
