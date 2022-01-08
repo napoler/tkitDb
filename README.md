@@ -17,3 +17,4 @@ https://plyvel.readthedocs.io/en/latest/
 sqlitedict -- persistent dict, backed-up by SQLite and pickle
 
 https://github.com/RaRe-Technologies/sqlitedict
+https://pythonhosted.org/sqlite_object/sqlite_dict.html
