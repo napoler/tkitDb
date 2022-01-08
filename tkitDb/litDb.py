@@ -45,9 +45,58 @@ class LitDb:
     def get_item(self):
         for row in self.cursor.execute('SELECT * FROM stocks ORDER BY price'):
             yield row
-    def csv_to_sql(self,csv_file,db_name="csv_import"):
+
+    def csv_to_sql(self, csv_file, table_name="csv_import"):
         df = pandas.read_csv(csv_file)
-        df.to_sql(db_name, self.db, if_exists='replace', index=False)
+        df.to_sql(table_name, self.db, if_exists='replace', index=False)
+
+    def get_csv(self, table_name="csv_import"):
+        for row in self.cursor.execute('SELECT * FROM csv_import'):
+            yield row
+
+    def panda_to_sql(self, df: pandas.DataFrame, table_name="panda_import"):
+        """
+        import pandas dataframe to sqlite
+
+        :param df:
+        :param table_name:
+        :return:
+        """
+        df.to_sql(table_name, self.db, if_exists='replace', index=False)
+
+
+
+    def table_info(self, sql):
+        for row in self.cursor.execute(sql):
+            yield row
+
+    def select(self, sql):
+        for row in self.cursor.execute(sql):
+            yield row
+
+    def update(self, sql):
+        self.cursor.execute(sql)
+
+    def delete(self, sql):
+        self.cursor.execute(sql)
+
+    def create_index(self, sql):
+        self.cursor.execute(sql)
+
+    def drop_index(self, sql):
+        self.cursor.execute(sql)
+
+    def create_trigger(self, sql):
+        self.cursor.execute(sql)
+
+    def drop_trigger(self, sql):
+        self.cursor.execute(sql)
+
+    def create_view(self, sql):
+        self.cursor.execute(sql)
+
+    def drop_view(self, sql):
+        self.cursor.execute(sql)
 
 
 if __name__ == '__main__':
@@ -56,8 +105,10 @@ if __name__ == '__main__':
     # db.create_table()
     db.add()
     db.save()
-    for it in db.get_item():
-        print(it)
 
+    db.csv_to_sql("/mnt/data/dev/github/tkitDb/data/ratings.csv")
+
+    for it in db.get_csv():
+        print(it)
     db.close()
     pass
