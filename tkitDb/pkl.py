@@ -12,8 +12,8 @@ import pickle
 import shutil
 
 
-class Pkl:
-    def __init__(self, path="tdata", task='data', plimit=10000000):
+class PkDb:
+    def __init__(self, path="tdata", task='data', limit=10000000):
         """
         进程名字
         保存目录
@@ -21,7 +21,7 @@ class Pkl:
 
         """
         self.path = path
-        self.plimit = plimit
+        self.limit = limit
         self.task = task
         if os.path.exists(path):
             pass
@@ -45,7 +45,7 @@ class Pkl:
         for i, item in enumerate(data):
             batch_data.append(item)
 
-            if i % self.plimit == 0 and i != 0:
+            if i % self.limit == 0 and i != 0:
                 self.save_batch(batch_data)
                 batch_data = []
         self.save_batch(batch_data)

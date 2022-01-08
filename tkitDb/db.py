@@ -12,7 +12,7 @@ import json
 from tqdm import tqdm
 
 
-class LDB:
+class LevelDb:
     """
     数据库
     plyvel
@@ -140,7 +140,7 @@ class LDB:
         return self.db.delete(key)
 
 
-class Db:
+class UnQDb:
     """
     基于UnQLite的nosql数据存贮
     """
