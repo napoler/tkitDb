@@ -42,12 +42,18 @@ class LitDb:
     def add(self):
         self.cursor.execute("INSERT INTO stocks VALUES ('2006-01-05','BUY','RHAT',100,35.14)")
 
+    def get_item(self):
+        for row in self.cursor.execute('SELECT * FROM stocks ORDER BY price'):
+            yield row
 
 if __name__ == '__main__':
     db = LitDb()
     db.conn()
-    db.create_table()
+    # db.create_table()
     db.add()
     db.save()
+    for it in db.get_item():
+        print(it)
+
     db.close()
     pass
