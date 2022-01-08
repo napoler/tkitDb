@@ -9,6 +9,7 @@ import os
 import sqlite3
 import pandas
 
+
 class LitDb:
     def __init__(self):
         self.db = None
@@ -25,6 +26,9 @@ class LitDb:
         self.db = sqlite3.connect(self.db_path)
         self.cursor = self.db.cursor()
 
+    def save(self):
+        self.db.commit()
+
     def close(self):
         """
         closs db
@@ -32,7 +36,18 @@ class LitDb:
         """
         self.db.close()
 
+    def create_table(self):
+        self.cursor.execute('''CREATE TABLE stocks (date text, trans text, symbol text, qty real, price real)''')
+
+    def add(self):
+        self.cursor.execute("INSERT INTO stocks VALUES ('2006-01-05','BUY','RHAT',100,35.14)")
+
 
 if __name__ == '__main__':
-    db=LitDb()
+    db = LitDb()
+    db.conn()
+    db.create_table()
+    db.add()
+    db.save()
+    db.close()
     pass
