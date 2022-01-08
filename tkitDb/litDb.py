@@ -10,7 +10,7 @@ import sqlite3
 import pandas
 
 
-class LitDb:
+class Lit3Db:
     def __init__(self):
         self.db = None
         self.cursor = None
@@ -64,8 +64,6 @@ class LitDb:
         """
         df.to_sql(table_name, self.db, if_exists='replace', index=False)
 
-
-
     def table_info(self, sql):
         for row in self.cursor.execute(sql):
             yield row
@@ -98,17 +96,24 @@ class LitDb:
     def drop_view(self, sql):
         self.cursor.execute(sql)
 
+    def kv_set(self, key, value):
+        self.cursor.execute("INSERT INTO kv VALUES ('{}','{}')".format(key, value))
+
+    def kv_get(self, key):
+        for row in self.cursor.execute("SELECT * FROM kv WHERE key='{}'".format(key)):
+            yield row
+
 
 if __name__ == '__main__':
-    db = LitDb()
+    db = Lit3Db()
     db.conn()
     # db.create_table()
     db.add()
     db.save()
-
-    db.csv_to_sql("/mnt/data/dev/github/tkitDb/data/ratings.csv")
-
-    for it in db.get_csv():
-        print(it)
+    #
+    # db.csv_to_sql("/mnt/data/dev/github/tkitDb/data/ratings.csv")
+    #
+    # for it in db.get_csv():
+    #     print(it)
     db.close()
     pass
