@@ -27,11 +27,10 @@ long_description="""
 这里是说明
 
 数据库操作。
-
 """
 setup(
     name='tkitDb',
-    version='0.0.1.3',
+    version='0.0.1.3'+time.strftime('%Y%m%d%H%M%S',time.localtime(time.time())),
     description='Terry toolkit db',
     author='Terry Chan',
     author_email='napoler2008@gmail.com',
